@@ -1,0 +1,23 @@
+{
+  "name": "riders-BE",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reidysj/riders-BE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reidysj/riders-BE/issues"
+  },
+  "homepage": "https://github.com/reidysj/riders-BE#readme",
+  "dependencies": {
+    "knex": "^0.21.1"
+  }
+}
