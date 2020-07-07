@@ -2,7 +2,6 @@ const router = require('express').Router()
 const bcrypt = require('bcryptjs')
 const generateToken = require('../utils/generateToken')
 const Users = require('../users/model.js')
-const model = require('../users/model.js')
 
 router.post('/register', verifyUser, (req, res) => {
     const newUser = req.body;

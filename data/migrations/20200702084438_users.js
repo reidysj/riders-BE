@@ -4,6 +4,8 @@ exports.up = function(knex) {
         tbl.increments()
         tbl.string('username').unique().notNullable()
         tbl.string('password').unique().notNullable()
+        tbl.string('first_name')
+        tbl.string('last_name')
         tbl.string('email')
         tbl.text('address')
         tbl.string('city')
