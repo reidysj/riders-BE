@@ -1,17 +1,17 @@
 const router = require('express').Router()
 const bcrypt = require('bcryptjs')
 const generateToken = require('../utils/generateToken')
+const authenticator = require('../auth/admin-authenticator.js')
 const Users = require('../users/model.js')
 
-router.post('/register', verifyUser, (req, res) => {
+router.post('/register', authenticator, verifyUser, (req, res) => {
     const newUser = req.body;
     delete newUser.rememberMe
     const hash = bcrypt.hashSync(newUser.password, 12);
     newUser.password = hash;
     Users.add(newUser)
     .then(user => {
-        const token = generateToken(user, req.body.rememberMe)
-        res.status(201).json({user, token})
+        res.status(201).json(user)
     })
     .catch(err => {
         res.status(500).json({error: err.message})

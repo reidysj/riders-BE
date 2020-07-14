@@ -1,7 +1,12 @@
 const db = require('../data/dbConfig.js')
 
 module.exports = {
-    add
+    add,
+    get
+}
+
+function get(){
+    return db('contacts')
 }
 
 function add(contact) {

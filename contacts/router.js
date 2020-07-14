@@ -1,5 +1,16 @@
 const router = require('express').Router()
+const authenticator = require('../auth/admin-authenticator.js')
 const Contacts = require('./model.js')
+
+router.get('/', authenticator, (req, res) => {
+    Contacts.get()
+    .then(contacts => {
+        res.status(200).json(contacts)
+    })
+    .catch(err => {
+        res.status(500).json({message: err.message})
+    })
+})
 
 router.post('/', verifyContact, (req, res) => {
     Contacts.add(req.body)
