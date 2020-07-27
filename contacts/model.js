@@ -2,7 +2,9 @@ const db = require('../data/dbConfig.js')
 
 module.exports = {
     add,
-    get
+    get,
+    remove,
+    getBy
 }
 
 function get(){
@@ -20,4 +22,9 @@ function add(contact) {
 
 function getBy(filter){
     return db('contacts').first().where(filter)
+}
+
+function remove(id){
+    console.log(id)
+    return db('contacts').where({id}).del()
 }
