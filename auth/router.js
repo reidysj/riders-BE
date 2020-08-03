@@ -4,9 +4,10 @@ const generateToken = require('../utils/generateToken')
 const adminAuthenticator = require('../auth/admin-authenticator.js')
 const Users = require('../users/model.js')
 
-router.post('/register', adminAuthenticator, verifyUser, verifyUnique, (req, res) => {
+// adminAuthenticator
+
+router.post('/register', verifyUser, verifyUnique, (req, res) => {
     const newUser = req.body;
-    console.log(req.body)
     const hash = bcrypt.hashSync(newUser.password, 12);
     newUser.password = hash;
     Users.add(newUser)
@@ -22,6 +23,7 @@ router.post('/login', verifyUser, (req, res) => {
     const {username, password, rememberMe} = req.body;
     Users.getBy({username})
     .then(user => {
+        console.log(user)
         if(user && bcrypt.compareSync(password, user.password)){
             const token = generateToken(user, rememberMe)
             res.status(200).json({user, token})

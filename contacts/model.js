@@ -25,6 +25,5 @@ function getBy(filter){
 }
 
 function remove(id){
-    console.log(id)
     return db('contacts').where({id}).del()
 }
